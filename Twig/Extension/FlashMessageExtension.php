@@ -2,7 +2,7 @@
 
 namespace ICE\FlashMessageBundle\Twig\Extension;
 
-use Symfony\Component\HttpFoundation\Session;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
  * The FlashMessage extension renders flash messages set both in Symfony's session service
