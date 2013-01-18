@@ -23,7 +23,7 @@ Installation
     Add the following lines in your ``deps`` file:
 
         [ICEFlashMessageBundle]
-            git=git://github.com/nielskrijger/FlashMessageBundle.git
+            git=git://github.com/AZielinski/FlashMessageBundle.git
             target=/bundles/ICE/FlashMessageBundle
 
     Run the vendors script:
