@@ -4,18 +4,21 @@ namespace ICE\FlashMessageBundle\Twig\Extension;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
+use  Symfony\Component\Templating\Helper\HelperInterface;
+
 /**
  * The FlashMessage extension renders flash messages set both in Symfony's session service
  * and allows settings flash messages in javascript or using twig function.
  * 
  * @author Niels Krijger <niels@kryger.nl>
  */
-class FlashMessageExtension extends \Twig_Extension
+class FlashMessageExtension extends \Twig_Extension implements HelperInterface
 {
     /**
      * @var Session
      */
     protected $session;
+    protected $charset = 'UTF-8';
     
     /**
      * Creates a new FlashMessageExtension
@@ -62,7 +65,7 @@ class FlashMessageExtension extends \Twig_Extension
         if (count($messages) > 0) {
             $return .= '<script language="javascript">$(function () {';
             foreach ($messages as $type => $message) {
-                $return .= '$.flash({ type: "' . addslashes($type) . '", message: "' . addslashes($message) . '" });';
+                $return .= 'jQuery.flash({ type: "' . addslashes($type) . '", message: "' . addslashes($message) . '" });';
             }
             $return .= '});</script>';
         }
@@ -78,4 +81,8 @@ class FlashMessageExtension extends \Twig_Extension
     {
         return 'flashmessage';
     }
+
+    public function setCharset($charset) { $this->charset = $charset; }
+    public function getCharset() { return $this->charset; }
+
 }

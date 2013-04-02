@@ -7,7 +7,9 @@
     <services>
         <service id="twig.extension.flashmessage" class="ICE\FlashMessageBundle\Twig\Extension\FlashMessageExtension" public="true">
             <tag name="twig.extension" />
+            <tag name="templating.helper" alias="flashmessage" />
             <argument type="service" id="session" />
         </service>
     </services>
 </container>
+
